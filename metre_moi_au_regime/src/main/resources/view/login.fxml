@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.*?>
+
+<AnchorPane prefHeight="1200.0" prefWidth="2000.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.esi.prj.controller.LoginController">
+    <stylesheets>
+        <URL value="@../style/login.css" />
+    </stylesheets>
+    <Pane prefHeight="1200.0" prefWidth="2000.0" styleClass="container-login">
+
+        <Pane fx:id="loginPane" layoutX="100.0" layoutY="50.0" prefHeight="500.0" prefWidth="800.0" styleClass="interface-login">
+            <Label layoutX="300.0" layoutY="50.0" styleClass="login-title" text="Connexion" />
+
+            <VBox layoutX="250.0" layoutY="120.0" prefHeight="300.0" prefWidth="300.0" spacing="20.0">
+                <Label styleClass="field-label" text="Adresse e-mail" />
+                <TextField fx:id="emailField" promptText="Entrez votre email" styleClass="input-field" />
+
+                <Label styleClass="field-label" text="Mot de passe" />
+                <HBox alignment="CENTER_LEFT" spacing="5.0">
+                    <PasswordField fx:id="passwordField" promptText="Entrez votre mot de passe" styleClass="input-field" HBox.hgrow="ALWAYS" />
+                    <Button fx:id="togglePasswordButton" styleClass="toggle-password-button">
+                        <graphic>
+                            <FontIcon iconLiteral="mdi-eye-off" iconSize="18" />
+                        </graphic>
+                    </Button>
+                </HBox>
+
+                <HBox alignment="CENTER" prefHeight="60.0" spacing="20.0">
+                    <padding>
+                        <Insets top="20.0" />
+                    </padding>
+                    <Button fx:id="loginButton" prefWidth="120.0" styleClass="login-button" text="Connexion" />
+                    <Button fx:id="signInButton" prefWidth="120.0" styleClass="signin-button" text="Inscription" />
+                </HBox>
+            </VBox>
+        </Pane>
+
+        <Pane fx:id="registerPane" layoutX="100.0" layoutY="50.0" prefHeight="500.0" prefWidth="800.0" styleClass="interface-login" visible="false">
+          <Label layoutX="300.0" layoutY="50.0" styleClass="login-title" text="Inscription" />
+
+          <VBox layoutX="250.0" layoutY="120.0" prefHeight="300.0" prefWidth="300.0" spacing="20.0">
+              <Label styleClass="field-label" text="Adresse e-mail" />
+              <TextField fx:id="registerEmailField" promptText="Entrez votre email" styleClass="input-field" />
+
+              <Label styleClass="field-label" text="Mot de passe" />
+              <HBox alignment="CENTER_LEFT" spacing="5.0">
+                  <PasswordField fx:id="registerPasswordField" promptText="Entrez votre mot de passe" styleClass="input-field" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="toggleRegisterPasswordButton" styleClass="toggle-password-button">
+                      <graphic>
+                          <FontIcon iconLiteral="mdi-eye-off" iconSize="18" />
+                      </graphic>
+                  </Button>
+              </HBox>
+
+              <Label styleClass="field-label" text="Confirmer le mot de passe" />
+              <HBox alignment="CENTER_LEFT" spacing="5.0">
+                  <PasswordField fx:id="confirmPasswordField" promptText="Confirmez votre mot de passe" styleClass="input-field" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="toggleConfirmPasswordButton" styleClass="toggle-password-button">
+                      <graphic>
+                          <FontIcon iconLiteral="mdi-eye-off" iconSize="18" />
+                      </graphic>
+                  </Button>
+              </HBox>
+
+              <HBox alignment="CENTER" prefHeight="60.0" spacing="20.0">
+                  <padding>
+                      <Insets top="20.0" />
+                  </padding>
+                  <Button fx:id="registerButton" prefWidth="120.0" styleClass="login-button" text="S'inscrire" />
+                  <Button fx:id="backToLoginButton" prefWidth="120.0" styleClass="signin-button" text="Se connecter" />
+              </HBox>
+          </VBox>
+      </Pane>
+
+    </Pane>
+</AnchorPane>

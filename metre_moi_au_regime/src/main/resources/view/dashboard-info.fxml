@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="1200.0" prefWidth="2000.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.esi.prj.controller.DashboardInfoController">
+    <stylesheets>
+        <URL value="@../style/dashboard.css" />
+    </stylesheets>
+
+    <Pane prefHeight="600.0" prefWidth="1000.0" styleClass="container-dashboard">
+        <Pane layoutX="100.0" layoutY="50.0" prefHeight="500.0" prefWidth="800.0" styleClass="interface-dashboard">
+            <Pane layoutY="445.0" prefHeight="56.0" prefWidth="800.0" styleClass="interface-dashboard-ariane">
+                <Pane fx:id="home" prefHeight="56.0" prefWidth="100.0">
+                    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="35.0" layoutY="13.0">
+                        <Image url="@../images/house-white.png" />
+                    </ImageView>
+                </Pane>
+                <Pane fx:id="user" layoutX="100.0" prefHeight="56.0" prefWidth="100.0">
+                    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="35.0" layoutY="13.0">
+                        <Image url="@../images/user-white.png" />
+                    </ImageView>
+                </Pane>
+                <Pane fx:id="photo" layoutX="200.0" prefHeight="56.0" prefWidth="100.0">
+                    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="35.0" layoutY="13.0">
+                        <Image url="@../images/file-image.png" />
+                    </ImageView>
+                </Pane>
+                <Pane fx:id="search" layoutX="300.0" prefHeight="56.0" prefWidth="100.0">
+                    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="35.0" layoutY="13.0">
+                        <Image url="@../images/search.png" />
+                    </ImageView>
+                </Pane>
+                <Pane fx:id="activity" layoutX="400.0" prefHeight="56.0" prefWidth="100.0">
+                    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="35.0" layoutY="13.0">
+                        <Image url="@../images/activity.png" />
+                    </ImageView>
+                </Pane>
+                <Pane fx:id="product" layoutX="500.0" prefHeight="56.0" prefWidth="100.0">
+                    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="35.0" layoutY="13.0">
+                        <Image url="@../images/package-search.png" />
+                    </ImageView>
+                </Pane>
+                <Pane fx:id="info" layoutX="600.0" prefHeight="56.0" prefWidth="100.0">
+                    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="35.0" layoutY="13.0">
+                        <Image url="@../images/info.png" />
+                    </ImageView>
+                </Pane>
+            </Pane>
+            <Pane prefHeight="447.0" prefWidth="800.0">
+            <children>
+               <Pane layoutX="14.0" layoutY="14.0" prefHeight="415.0" prefWidth="771.0">
+                  <children>
+                     <Label layoutX="14.0" layoutY="22.0" text="Informations">
+                        <font>
+                           <Font size="30.0" />
+                        </font>
+                     </Label>
+                     <Label layoutX="14.0" layoutY="85.0" text="Projet Mètre-moi au régime par Grande Ian (62265) et Mouratidis Georges (62218)&#10;&#10;Nous remercions Lucid Icons pour les images données gratuitement. &#10;Nous remercions également Open Food Facts pour leur API.&#10;&#10;Ce projet est réalisé dans le cadre d'un projet à réaliser pour le cours 4PRJ1D&#10;pour l'établissement de la Haute-École Bruxelles-Brabant &#10;Enseignement Supérieur Informatique.">
+                        <font>
+                           <Font size="14.0" />
+                        </font>
+                     </Label>
+                     <Label layoutX="14.0" layoutY="265.0" prefHeight="111.0" prefWidth="500.0" text="Je, Georges, tiens à remercier Ian pour son aide dans la réalisation de ce travail. &#10;Ensemble, nous avons réalisé ce projet avec beaucoup d'arde. Lors de ce travail,&#10;nous avons bien rigolé, galéré mais surtout avec une volonté de fer de &#10;terminer ce projet. Alors à nouveau, merci Ian pour ton aide.  Tu es une personne&#10;qui a un talent en informatique mais aussi tu es mon meilleur ami.">
+                        <font>
+                           <Font size="14.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </Pane>
+            </children></Pane>
+        </Pane>
+    </Pane>
+</AnchorPane>

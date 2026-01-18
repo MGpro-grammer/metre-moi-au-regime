@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="1200.0" prefWidth="2000.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.esi.prj.controller.DashboardProfileController">
+    <stylesheets>
+        <URL value="@../style/dashboard.css" />
+    </stylesheets>
+
+    <Pane prefHeight="600.0" prefWidth="1000.0" styleClass="container-dashboard">
+        <Pane layoutX="100.0" layoutY="50.0" prefHeight="500.0" prefWidth="800.0" styleClass="interface-dashboard">
+            <Pane layoutY="445.0" prefHeight="56.0" prefWidth="800.0" styleClass="interface-dashboard-ariane">
+                <Pane fx:id="home" prefHeight="56.0" prefWidth="100.0">
+                    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="35.0" layoutY="13.0">
+                        <Image url="@../images/house-white.png" />
+                    </ImageView>
+                </Pane>
+                <Pane fx:id="user" layoutX="100.0" prefHeight="56.0" prefWidth="100.0">
+                    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="35.0" layoutY="13.0">
+                        <Image url="@../images/user-white.png" />
+                    </ImageView>
+                </Pane>
+               <Pane fx:id="photo" layoutX="200.0" prefHeight="56.0" prefWidth="100.0">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="35.0" layoutY="13.0">
+                     <Image url="@../images/file-image.png" />
+                  </ImageView>
+               </Pane>
+               <Pane fx:id="search" layoutX="300.0" prefHeight="56.0" prefWidth="100.0">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="35.0" layoutY="13.0">
+                     <Image url="@../images/search.png" />
+                  </ImageView>
+               </Pane>
+               <Pane fx:id="activity" layoutX="400.0" prefHeight="56.0" prefWidth="100.0">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="35.0" layoutY="13.0">
+                     <Image url="@../images/activity.png"/>
+                  </ImageView>
+               </Pane>
+               <Pane fx:id="product" layoutX="500.0" prefHeight="56.0" prefWidth="100.0">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="35.0" layoutY="13.0">
+                     <Image url="@../images/package-search.png"/>
+                  </ImageView>
+               </Pane>
+               <Pane fx:id="info" layoutX="600.0" prefHeight="56.0" prefWidth="100.0">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="35.0" layoutY="13.0">
+                     <Image url="@../images/info.png"/>
+                  </ImageView>
+               </Pane>
+            </Pane>
+           <Pane prefHeight="445.0" prefWidth="800.0">
+              <Pane layoutX="14.0" layoutY="14.0" prefHeight="93.0" prefWidth="189.0">
+                 <Label layoutX="21.0" layoutY="22.0" text="Ton magnifique nom">
+                    <font>
+                       <Font size="16.0" />
+                    </font>
+                 </Label>
+                 <TextField fx:id="name" layoutX="20.0" layoutY="47.0" />
+              </Pane>
+              <Pane layoutX="14.0" layoutY="107.0" prefHeight="93.0" prefWidth="189.0">
+                 <Label layoutX="65.0" layoutY="22.0" text="Ton age">
+                    <font>
+                       <Font size="16.0"/>
+                    </font>
+                 </Label>
+                 <Spinner fx:id="age" amountToStepBy="1" layoutX="58.0" layoutY="47.0" max="100" min="1"
+                          prefHeight="25.0" prefWidth="72.0" editable="true"/>
+              </Pane>
+              <Pane layoutX="14.0" layoutY="200.0" prefHeight="93.0" prefWidth="189.0">
+                 <Label layoutX="58.0" layoutY="22.0" text="Ton genre">
+                    <font>
+                       <Font size="16.0" />
+                    </font>
+                 </Label>
+                 <ComboBox fx:id="gender" layoutX="35.0" layoutY="54.0" prefHeight="25.0" prefWidth="119.0" />
+              </Pane>
+              <Pane layoutX="14.0" layoutY="293.0" prefHeight="93.0" prefWidth="189.0">
+                 <Label layoutX="67.0" layoutY="22.0" text="Ta taille">
+                    <font>
+                       <Font size="16.0" />
+                    </font>
+                 </Label>
+                 <Spinner fx:id="height" amountToStepBy="1.0" layoutX="58.0" layoutY="47.0" max="300.0" min="1.0" prefHeight="25.0" prefWidth="72.0" editable="true"/>
+              </Pane>
+              <Pane layoutX="203.0" layoutY="14.0" prefHeight="93.0" prefWidth="189.0">
+                 <Label layoutX="59.0" layoutY="22.0" text="Ton poids">
+                    <font>
+                       <Font size="16.0" />
+                    </font>
+                 </Label>
+                 <Spinner fx:id="weight" amountToStepBy="1.0" layoutX="58.0" layoutY="47.0" max="300.0" min="1.0" prefHeight="25.0" prefWidth="72.0" editable="true"/>
+              </Pane>
+              <Pane layoutX="211.0" layoutY="107.0" prefHeight="93.0" prefWidth="189.0">
+                 <Label layoutX="52.0" layoutY="22.0" text="Ton objectif">
+                    <font>
+                       <Font size="16.0" />
+                    </font>
+                 </Label>
+                 <Spinner fx:id="goalWeight" amountToStepBy="1.0" layoutX="58.0" layoutY="47.0" max="300.0" min="1.0" prefHeight="25.0" prefWidth="72.0" editable="true"/>
+              </Pane>
+              <Pane layoutX="203.0" layoutY="207.0" prefHeight="93.0" prefWidth="189.0">
+                 <Label layoutX="64.0" layoutY="22.0" text="Le début">
+                    <font>
+                       <Font size="16.0" />
+                    </font>
+                 </Label>
+                 <DatePicker fx:id="startDate" layoutX="7.0" layoutY="47.0" />
+              </Pane>
+              <Pane layoutX="203.0" layoutY="293.0" prefHeight="93.0" prefWidth="189.0">
+                 <Label layoutX="76.0" layoutY="22.0" text="La fin">
+                    <font>
+                       <Font size="16.0" />
+                    </font>
+                 </Label>
+                 <DatePicker fx:id="endDate" layoutX="7.0" layoutY="47.0" />
+              </Pane>
+              <Pane layoutX="392.0" layoutY="14.0" prefHeight="93.0" prefWidth="189.0">
+                 <Label layoutX="22.0" layoutY="22.0" text="Ton niveau d'activité">
+                    <font>
+                       <Font size="16.0" />
+                    </font>
+                 </Label>
+                 <ComboBox fx:id="activityLevel" layoutX="4.0" layoutY="54.0" prefHeight="25.0" prefWidth="182.0" />
+              </Pane>
+              <Pane layoutX="433.0" layoutY="154.0" prefHeight="200.0" prefWidth="340.0">
+                 <Label layoutX="57.0" layoutY="24.0" text="Voulez vous sauvegarder &#10;vos changement ?"
+                        textAlignment="CENTER">
+                    <font>
+                       <Font size="20.0"/>
+                    </font>
+                 </Label>
+                 <Button fx:id="yesButton" layoutX="101.0" layoutY="112.0" mnemonicParsing="false" text="Oui"/>
+                 <Button fx:id="noButton" layoutX="199.0" layoutY="112.0" mnemonicParsing="false" text="Non"/>
+                 <Label fx:id="statusModification" layoutX="94.0" layoutY="157.0" text="STATUS_MODIFICATION">
+                    <font>
+                       <Font size="14.0"/>
+                    </font>
+                 </Label>
+              </Pane>
+           </Pane>
+        </Pane>
+    </Pane>
+</AnchorPane>

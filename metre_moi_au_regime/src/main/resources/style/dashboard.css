@@ -1,0 +1,32 @@
+.container-dashboard {
+    -fx-background-color: #4169E1;
+}
+
+.interface-dashboard {
+    -fx-background-color: #F5F5F5;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);
+}
+
+.interface-dashboard-ariane {
+    -fx-background-color: #0047AB;
+    -fx-background-radius: 0 0 10px 10px;
+}
+
+.interface-dashboard-main {
+    -fx-background-color: #F5F5F5;
+    -fx-background-radius: 10px 10px 0 0;
+}
+
+.interface-dashboard-home {
+    -fx-background-color: #0047AB;
+}
+
+.interface-photo-zone {
+    -fx-background-color: #0047AB;
+}
+
+.log-off {
+    -fx-background-color: #0047AB;
+    -fx-text-fill: white;
+}

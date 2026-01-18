@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="1200.0" prefWidth="2000.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.esi.prj.controller.DashboardActivityController">
+    <stylesheets>
+        <URL value="@../style/dashboard.css" />
+    </stylesheets>
+
+    <Pane prefHeight="600.0" prefWidth="1000.0" styleClass="container-dashboard">
+        <Pane layoutX="100.0" layoutY="50.0" prefHeight="500.0" prefWidth="800.0" styleClass="interface-dashboard">
+            <Pane layoutY="445.0" prefHeight="56.0" prefWidth="800.0" styleClass="interface-dashboard-ariane">
+                <Pane fx:id="home" prefHeight="56.0" prefWidth="100.0">
+                    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="35.0" layoutY="13.0">
+                        <Image url="@../images/house-white.png" />
+                    </ImageView>
+                </Pane>
+                <Pane fx:id="user" layoutX="100.0" prefHeight="56.0" prefWidth="100.0">
+                    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="35.0" layoutY="13.0">
+                        <Image url="@../images/user-white.png" />
+                    </ImageView>
+                </Pane>
+                <Pane fx:id="photo" layoutX="200.0" prefHeight="56.0" prefWidth="100.0">
+                    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="35.0" layoutY="13.0">
+                        <Image url="@../images/file-image.png" />
+                    </ImageView>
+                </Pane>
+                <Pane fx:id="search" layoutX="300.0" prefHeight="56.0" prefWidth="100.0">
+                    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="35.0" layoutY="13.0">
+                        <Image url="@../images/search.png" />
+                    </ImageView>
+                </Pane>
+                <Pane fx:id="activity" layoutX="400.0" prefHeight="56.0" prefWidth="100.0">
+                    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="35.0" layoutY="13.0">
+                        <Image url="@../images/activity.png" />
+                    </ImageView>
+                </Pane>
+                <Pane fx:id="product" layoutX="500.0" prefHeight="56.0" prefWidth="100.0">
+                    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="35.0" layoutY="13.0">
+                        <Image url="@../images/package-search.png" />
+                    </ImageView>
+                </Pane>
+                <Pane fx:id="info" layoutX="600.0" prefHeight="56.0" prefWidth="100.0">
+                    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="35.0" layoutY="13.0">
+                        <Image url="@../images/info.png"/>
+                    </ImageView>
+                </Pane>
+            </Pane>
+            <Pane prefHeight="447.0" prefWidth="800.0">
+                <Pane layoutX="29.0" layoutY="23.0" prefHeight="413.0" prefWidth="432.0">
+                    <Label layoutX="121.0" layoutY="14.0" text="Voici ta liste d'activité">
+                        <font>
+                            <Font size="20.0"/>
+                        </font>
+                    </Label>
+                    <ListView fx:id="listActivity" layoutX="14.0" layoutY="44.0" prefHeight="362.0" prefWidth="404.0"/>
+                </Pane>
+                <Pane layoutX="461.0" layoutY="23.0" prefHeight="413.0" prefWidth="328.0">
+                    <Label layoutX="74.0" layoutY="14.0" text="Quelle activité as-tu &#10;faite aujourd'hui?"
+                           textAlignment="CENTER">
+                        <font>
+                            <Font size="20.0"/>
+                        </font>
+                    </Label>
+                    <Label layoutX="14.0" layoutY="83.0" text="Nom de l'activité :">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </Label>
+                    <TextField fx:id="nameActivity" layoutX="133.0" layoutY="81.0" prefHeight="25.0"
+                               prefWidth="191.0"/>
+                    <Label layoutX="14.0" layoutY="125.0" text="Calories dépensées :">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </Label>
+                    <Spinner fx:id="spendCalories" min="1.0" max="9999.0" amountToStepBy="1.0" layoutX="148.0" layoutY="122.0" prefHeight="25.0"
+                             prefWidth="79.0" editable="true"/>
+                    <Label layoutX="25.0" layoutY="207.0"
+                           text="Si tu souhaites supprimer une &#10;activité, séléctionne l'activité et &#10;appuie sur ce bouton."
+                           textAlignment="CENTER">
+                        <font>
+                            <Font size="20.0"/>
+                        </font>
+                    </Label>
+                    <Button fx:id="removeActivity" layoutX="128.0" layoutY="309.0" mnemonicParsing="false"
+                            text="Supprimer"/>
+                    <Button fx:id="addActivity" layoutX="137.0" layoutY="170.0" mnemonicParsing="false"
+                            text="Ajouter"/>
+                    <Label fx:id="statusActivity" layoutX="100.0" layoutY="367.0" text="STATUS_ACTIVITY">
+                        <font>
+                            <Font size="16.0"/>
+                        </font>
+                    </Label>
+                </Pane>
+            </Pane>
+        </Pane>
+    </Pane>
+</AnchorPane>

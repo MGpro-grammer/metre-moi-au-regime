@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="1200.0" prefWidth="2000.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.esi.prj.controller.DataUserController">
+    <stylesheets>
+        <URL value="@../style/datauser.css" />
+    </stylesheets>
+    <Pane prefHeight="1200.0" prefWidth="2000.0" styleClass="container-datauser">
+        <Pane layoutX="100.0" layoutY="50.0" prefHeight="500.0" prefWidth="800.0" styleClass="interface-datauser">
+            <Pane layoutX="200.0" layoutY="50.0" prefHeight="400.0" prefWidth="400.0">
+                <Arc fx:id="progressionDataUser" fill="DODGERBLUE" layoutX="200.0" layoutY="200.0" radiusX="200.0" radiusY="200.0" stroke="DODGERBLUE" strokeType="INSIDE" type="ROUND" />
+                <Arc fill="WHITE" layoutX="200.0" layoutY="200.0" length="360.0" radiusX="180.0" radiusY="180.0" stroke="WHITE" strokeType="INSIDE" type="ROUND" />
+                <Pane fx:id="namePane" layoutX="75.0" layoutY="75.0" prefHeight="250.0" prefWidth="250.0">
+                    <Label layoutX="2.0" layoutY="51.0" text="Est ce que tu as un nom &#10;champion ou championne ?" textAlignment="CENTER">
+                        <font>
+                            <Font size="20.0" />
+                        </font>
+                    </Label>
+                    <TextField fx:id="dataName" layoutY="148.0" prefHeight="25.0" prefWidth="245.0" />
+                </Pane>
+                <Pane fx:id="agePane" layoutX="75.0" layoutY="75.0" prefHeight="250.0" prefWidth="250.0" visible="false">
+                    <Label layoutX="25.0" layoutY="40.0" text="Nous avons besoin de &#10;ton âge?&#10;" textAlignment="CENTER">
+                        <font>
+                            <Font size="20.0" />
+                        </font>
+                    </Label>
+                    <Spinner fx:id="dataAge" amountToStepBy="1" editable="true" initialValue="1" layoutX="91.0" layoutY="125.0" max="100" min="1" prefHeight="25.0" prefWidth="68.0" />
+                </Pane>
+                <Pane fx:id="genderPane" layoutX="75.0" layoutY="75.0" prefHeight="250.0" prefWidth="250.0" visible="false">
+                    <Label layoutX="25.0" layoutY="40.0" text="Alors es-tu un champion&#10;ou une championne ?&#10;" textAlignment="CENTER">
+                        <font>
+                            <Font size="20.0" />
+                        </font>
+                    </Label>
+                    <Button fx:id="dataMaleGender" layoutX="46.0" layoutY="134.0" mnemonicParsing="false" text="♂">
+                        <font>
+                            <Font size="20.0" />
+                        </font>
+                    </Button>
+                    <Button fx:id="dataFemaleGender" layoutX="165.0" layoutY="134.0" mnemonicParsing="false" text="♀">
+                        <font>
+                            <Font size="20.0" />
+                        </font>
+                    </Button>
+                </Pane>
+                <Pane fx:id="weightHeightPane" layoutX="75.0" layoutY="75.0" prefHeight="250.0" prefWidth="250.0" visible="false">
+                    <Label layoutX="38.0" layoutY="14.0" text="Peux tu me donner &#10;ta taille &#10;et &#10;ton poids ?" textAlignment="CENTER">
+                        <font>
+                            <Font size="20.0" />
+                        </font>
+                    </Label>
+                    <Spinner fx:id="dataHeight" amountToStepBy="1.0" editable="true" initialValue="1.0" layoutX="14.0" layoutY="184.0" max="300.0" min="1.0" prefHeight="25.0" prefWidth="68.0" />
+                    <Spinner fx:id="dataWeight" amountToStepBy="1.0" editable="true" initialValue="1.0" layoutX="168.0" layoutY="184.0" max="300.0" min="1.0" prefHeight="25.0" prefWidth="68.0" />
+                    <Label layoutX="25.0" layoutY="161.0" text="Ta taille :" />
+                    <Label layoutX="173.0" layoutY="161.0" text="Ton poids :" />
+                </Pane>
+                <Pane fx:id="goalWeightPane" layoutX="75.0" layoutY="75.0" prefHeight="250.0" prefWidth="250.0" visible="false">
+                    <Label layoutX="22.0" layoutY="27.0" text="Quel est le poids que &#10;tu souhaites atteindre ?" textAlignment="CENTER">
+                        <font>
+                            <Font size="20.0" />
+                        </font>
+                    </Label>
+                    <Spinner fx:id="dataGoalWeight" amountToStepBy="1.0" editable="true" initialValue="1.0" layoutX="91.0" layoutY="113.0" max="300.0" min="1.0" prefHeight="25.0" prefWidth="68.0" />
+                </Pane>
+                <Pane fx:id="startDatePane" layoutX="75.0" layoutY="75.0" prefHeight="250.0" prefWidth="250.0" visible="false">
+                    <Label layoutX="36.0" layoutY="23.0" text="Quand souhaites tu &#10;commencer ?" textAlignment="CENTER">
+                        <font>
+                            <Font size="20.0" />
+                        </font>
+                    </Label>
+                    <DatePicker fx:id="dataStartDate" layoutX="38.0" layoutY="113.0" />
+                </Pane>
+                <Pane fx:id="endDatePane" layoutX="75.0" layoutY="75.0" prefHeight="250.0" prefWidth="250.0" visible="false">
+                    <Label layoutX="44.0" layoutY="21.0" text="Quand penses tu&#10;pouvoir terminer ?" textAlignment="CENTER">
+                        <font>
+                            <Font size="20.0" />
+                        </font>
+                    </Label>
+                    <DatePicker fx:id="dataEndDate" layoutX="38.0" layoutY="113.0" />
+                </Pane>
+                <Pane fx:id="activityLevelPane" layoutX="75.0" layoutY="75.0" prefHeight="250.0" prefWidth="250.0" visible="false">
+                    <Label layoutX="39.0" layoutY="26.0" text="Quel est ton niveau&#10;d'activité ?" textAlignment="CENTER">
+                        <font>
+                            <Font size="20.0" />
+                        </font>
+                    </Label>
+                    <ComboBox fx:id="dataActivityLevel" layoutX="50.0" layoutY="113.0" prefWidth="150.0" />
+                </Pane>
+            </Pane>
+            <Pane fx:id="leftButton" layoutX="14.0" layoutY="437.0" prefHeight="50.0" prefWidth="150.0">
+                <ImageView fitHeight="49.0" fitWidth="128.0" layoutX="25.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../images/fleche-gauche.png" />
+                </ImageView>
+            </Pane>
+            <Pane fx:id="rightButton" layoutX="614.0" layoutY="437.0" prefHeight="50.0" prefWidth="150.0">
+                <ImageView fitHeight="49.0" fitWidth="128.0" layoutX="25.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../images/fleche-droite.png" />
+                </ImageView>
+            </Pane>
+            <Pane fx:id="validation" layoutX="629.0" layoutY="34.0" prefHeight="120.0" prefWidth="120.0">
+                <Label layoutX="16.0" layoutY="22.0" text="Tout est bon ?">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Button fx:id="validationButton" layoutX="43.0" layoutY="60.0" mnemonicParsing="false" text="Oui" />
+            </Pane>
+        </Pane>
+    </Pane>
+</AnchorPane>

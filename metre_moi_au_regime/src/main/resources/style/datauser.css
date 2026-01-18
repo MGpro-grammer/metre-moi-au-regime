@@ -1,0 +1,9 @@
+.container-datauser {
+    -fx-background-color: #4169E1;
+}
+
+.interface-datauser {
+    -fx-background-color: #F5F5F5;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);
+}

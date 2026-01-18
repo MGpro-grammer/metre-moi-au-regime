@@ -1,0 +1,73 @@
+.container-login {
+    -fx-background-color: #4169E1;
+}
+
+.interface-login {
+    -fx-background-color: #F5F5F5;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);
+}
+
+.login-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+.field-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #555555;
+}
+
+.input-field {
+    -fx-background-color: white;
+    -fx-background-radius: 5px;
+    -fx-border-color: #CCCCCC;
+    -fx-border-radius: 5px;
+    -fx-padding: 8px;
+    -fx-font-size: 14px;
+    -fx-pref-height: 35px;
+}
+
+.input-field:focused {
+    -fx-border-color: #4169E1;
+    -fx-border-width: 1.5px;
+}
+
+.login-button {
+    -fx-background-color: #4169E1;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-padding: 10px 20px;
+}
+
+.login-button:hover {
+    -fx-background-color: #3258D1;
+}
+
+.signin-button {
+    -fx-background-color: #6C757D;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-padding: 10px 20px;
+}
+
+.signin-button:hover {
+    -fx-background-color: #5A6268;
+}
+
+.toggle-password-button {
+    -fx-background-color: transparent;
+    -fx-border-color: #CCCCCC;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+    -fx-min-width: 35px;
+    -fx-min-height: 35px;
+}
+
+.toggle-password-button:hover {
+    -fx-background-color: #F0F0F0;
+}
