@@ -22,7 +22,6 @@ Nous donnons également la structure de la base de données utilisées par l'app
 
 ![Diagramme de classe de la partie model](./images/model.png)
 ![Diagramme de classe de la partie view-model](./images/view_model.png)
-![Diagramme de classe de la partie view](./images/view.png)
 ![Base de données](./images/base_de_donnees.png)
 
 ## Choix de l'Architecture
