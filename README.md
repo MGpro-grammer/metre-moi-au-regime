@@ -12,7 +12,22 @@
 ![JUnit5](https://img.shields.io/badge/JUnit-5-25A162?style=flat&logo=junit5&logoColor=white)
 ![Mockito](https://img.shields.io/badge/Mockito-tested-78A641?style=flat)
 
+![Demo: scanning a product barcode from a picture and adding it to the food diary](./images/demo.gif)
+
 </div>
+
+## Table of contents
+
+- [About](#about)
+- [Features](#features)
+- [Tech stack](#tech-stack)
+- [Architecture](#architecture)
+- [Project structure](#project-structure)
+- [Getting started](#getting-started)
+- [Testing](#testing)
+- [Team](#team)
+- [Roadmap](#roadmap)
+- [Acknowledgements](#acknowledgements)
 
 ## About
 
@@ -160,66 +175,72 @@ cd metre-moi-au-regime/metre_moi_au_regime
 > The application was developed and tested on Windows. On Linux and macOS, the OCR scan relies on
 > a system installation of Tesseract (`sudo apt install tesseract-ocr` or `brew install tesseract`).
 
-## Plan de Tests Fonctionnels
+## Testing
 
-Les tests fonctionnels élémentaires pour le projet sont les suivants :
+The project contains **253 automated tests** written with JUnit 5, organised by layer:
 
-- Tester la création d'un utilisateur et la connexion de l'utilisateur
-- Test de suivi alimentaire et du poids
-- Test d'ajout un produit alimentaire
-- Test de recherche d'un aliment par un code EAN ou par un nom
-- Test du scanner d'un code EAN
-- Test d'affichage des produits alimentaires consommés
-- Test de l'affichage des activités effectuées
+| Layer      | Tests | Approach                                                                                         |
+|------------|------:|--------------------------------------------------------------------------------------------------|
+| Repository | 86    | DAOs tested against an **in-memory SQLite database**; repositories tested with **Mockito** mocks |
+| Model      | 68    | Business rules of the facades, including a comparison of the sequential and multithreaded search |
+| ViewModel  | 96    | UI logic tested without launching the JavaFX interface                                           |
+| Service    | 3     | OCR extraction on sample images and Open Food Facts client                                       |
 
-## Calendrier Hebdomadaire des Tâches
+Run the tests that do not depend on the network (217 tests):
 
-### Semaine 1 - 4H
+```powershell
+# Windows (PowerShell)
+.\mvnw.cmd test "-Dtest=!OpenFoodFactsServiceTest,!FoodFacadeTest,!FoodFacadePerformanceTest,!FoodSearchViewModelTest"
+```
 
-| Qui     | Description                                                   |
-|---------|---------------------------------------------------------------|
-| Tous    | Analyse du projet                                             |
-| Georges | Construction du diagramme de classe de la base de données     |
-| Ian     | Construction du diagramme de classe du model et du model-view |
+```bash
+# Linux / macOS
+./mvnw test -Dtest='!OpenFoodFactsServiceTest,!FoodFacadeTest,!FoodFacadePerformanceTest,!FoodSearchViewModelTest'
+```
 
-### Semaine 2 - 12H
+Run the whole test suite:
 
-| Qui     | Description                                                                      |
-|---------|----------------------------------------------------------------------------------|
-| Tous    | Début du projet - Mise en commun partie 1                                        |
-| Georges | Création des DB et des views de l'utilisateur et de son journal (avec des tests) |
-| Ian     | Creation du back-end pour l'utilisateur et de son journal (avec des tests)       |
+```bash
+./mvnw test          # Windows: .\mvnw.cmd test
+```
 
-### Semaine 3 - 8H
+> [!WARNING]
+> 36 tests (`OpenFoodFactsServiceTest`, `FoodFacadeTest`, `FoodFacadePerformanceTest` and `FoodSearchViewModelTest`)
+> call the real Open Food Facts API. The API allows **10 search requests per minute per IP address**, and each name
+> search sends 10 requests (one per result page). These tests can therefore fail when the quota is exceeded,
+> which can already happen during a single run of the whole suite.
 
-| Qui     | Description                                                                                                                           |
-|---------|---------------------------------------------------------------------------------------------------------------------------------------|
-| Tous    | Ajout de la fonctionnalité principale - Mise en commun partie 2                                                                       |
-| Georges | Création des DB et des views de l'ajout d'un aliment par la recherche (grâce à l'API, avec des tests pour la DB)                      |
-| Ian     | Création du back-end pour l'ajout d'un produit (utilisation du multi-threads) <br> et enregistrement dans le journal (avec des tests) |
+### Manual test scenarios
 
-### Semaine 4 - 8H
-| Qui     | Description                                                                                                                    |
-|---------|--------------------------------------------------------------------------------------------------------------------------------|
-| Tous    | Ajout de la fonctionnalité de scanner - Mise en commun partie 3                                                                |
-| Georges | Creation de la view pour le scanner d'un code EAN et d'affichage d'un produit <br> avec la possibilité de supprimer le produit |
-| Ian     | Création du back-end pour l'ajout d'un produit grâce à un scanner (OCR scanner, avec des tests)                                |
+- Sign up and log in
+- Log the food consumed during the day
+- Add a food product
+- Search for a product by EAN code or by name
+- Scan an EAN code from a picture
+- Display the consumed products
+- Display the performed activities
 
-### Semaine 5 - 8H
-| Qui     | Description                                                                  |
-|---------|------------------------------------------------------------------------------|
-| Tous    | Ajout des dernières fonctionnalités - Mise en commun partie 4                |
-| Georges | Création de la possibilité de modifier son profil dans une view              |
-| Ian     | Création du back-end pour modifier en conséquence le profil de l'utilisateur |
+## Team
 
-### Semaine 6 - 4H
-| Qui     | Description                                                                                |
-|---------|--------------------------------------------------------------------------------------------|
-| Tous    | Finalisation du projet                                                                     |
-| Georges | Mise au point et correction de certains bug venant de la view <br> ou des bases de données |
-| Ian     | Mise au point et correction de certians bug venant du model  <br> ou du view-model         |
+| Member                                                                      | Main contributions                                                                                   |
+|-----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|
+| **Georges Mouratidis** ([@MGpro-grammer](https://github.com/MGpro-grammer)) | Database design and tests, JavaFX views and controllers (diary, product search, EAN scanner, profile)|
+| **Ian Grande** ([@ian-grande-dev](https://github.com/ian-grande-dev))       | Model and ViewModel layers, business logic, multithreaded product search, OCR scanner service        |
 
-## Remerciements
+The week-by-week planning is available in [`docs/PROJECT_LOG.md`](docs/PROJECT_LOG.md).
 
-Nous tenons à remercier nos enseignants pour leur soutien et leurs conseils tout au long de ce projet.
-Je, Georges Mouratidis, remercie également Ian Grande pour sa collaboration et son travail acharné sur ce projet.
+## Roadmap
+
+- [ ] Respect the Open Food Facts rate limit (10 search requests per minute): fewer pages per search,
+  local caching, and a clear message to the user when the quota is exceeded.
+- [ ] Replace the simplified password encoding with a salted hashing algorithm (PBKDF2 or BCrypt).
+- [ ] Decode barcodes directly from the image (e.g. with ZXing) instead of reading the printed digits with OCR.
+- [ ] Create the database schema automatically at first launch instead of shipping a `.db` file.
+- [ ] Package the application as a native installer with `jpackage`.
+
+## Acknowledgements
+
+- Our teachers at HE2B ESI for their guidance and advice throughout the project.
+- A special thanks to Ian Grande for his collaboration and hard work on this project.
+- [Open Food Facts](https://world.openfoodfacts.org/) for their open database of food products.
+- [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) and [Tess4J](https://github.com/nguyenq/tess4j) for text recognition.
