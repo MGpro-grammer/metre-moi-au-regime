@@ -1,33 +1,164 @@
-# Mètre-Moi au Régime
+<div align="center">
 
-![Java](https://img.shields.io/badge/Java-ED8B00?style=flat&logo=openjdk&logoColor=white) ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat&logo=sqlite&logoColor=white) ![Markdown](https://img.shields.io/badge/Markdown-000000?style=flat&logo=markdown&logoColor=white)
-![FXML](https://img.shields.io/badge/FXML-0078D7?style=flat&logo=java&logoColor=white) ![CSS](https://img.shields.io/badge/CSS-1572B6?style=flat&logo=css3&logoColor=white)
+# Mètre-moi au régime
 
-## Auteurs
+**Desktop nutrition tracker built with JavaFX — log your meals, scan products and follow your daily calorie and macronutrient goals.**
 
-- Groupe D131
-- g62218 Mouratidis Georges
-- g62265 Grande Ian
+![Java](https://img.shields.io/badge/Java-21-ED8B00?style=flat&logo=openjdk&logoColor=white)
+![JavaFX](https://img.shields.io/badge/JavaFX-17-3A75B0?style=flat&logo=java&logoColor=white)
+![Maven](https://img.shields.io/badge/Maven-C71A36?style=flat&logo=apachemaven&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat&logo=sqlite&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS-1572B6?style=flat&logo=css3&logoColor=white)
+![JUnit5](https://img.shields.io/badge/JUnit-5-25A162?style=flat&logo=junit5&logoColor=white)
+![Mockito](https://img.shields.io/badge/Mockito-tested-78A641?style=flat)
 
-## Description du Projet
+</div>
 
-Mètre-Moi au Régime est une application JavaFX qui permet aux utilisateurs de suivre leur régime alimentaire et leur poids. 
-L'application propose des fonctionnalités telles que la création d'un compte utilisateur, le suivi de l'alimentation quotidienne,
-la gestion des régimes et le suivi du poids.
+## About
 
-## Diagramme de Classe
+**Mètre-moi au régime** is a desktop application that helps users follow a diet. Based on the user's profile
+(age, height, weight, activity level and goal), it computes daily calorie and macronutrient needs, lets the user
+log the food they eat and the activities they do, and shows their progress towards their goals in real time.
 
-Le diagramme de classe ci-dessous illustre la structure du modèle de l'application.
-Nous donnons également la structure de la base de données utilisées par l'application.
+Products can be found by name or barcode (EAN) through the [Open Food Facts](https://world.openfoodfacts.org/)
+database, or recognised from a photo of the barcode thanks to OCR.
 
-![Diagramme de classe de la partie model](./images/model.png)
-![Diagramme de classe de la partie view-model](./images/view_model.png)
-![Base de données](./images/base_de_donnees.png)
+> **Context** — Academic team project carried out at HE2B ESI (Brussels) by **Georges Mouratidis** and
+> **Ian Grande** over six weeks, with a strong focus on a clean layered architecture (MVVM) and automated testing.
 
-## Choix de l'Architecture
+## Features
 
-L'architecture retenue pour ce projet est le _model-view-view-model_ soit le MVVM.
+- **Account management** — multi-step sign-up, login, logout and profile editing, with email format
+  and password strength validation (uppercase, lowercase, digit and special character).
+- **Personalised daily goals** — calories, proteins, fats and carbohydrates computed with the
+  Mifflin-St Jeor equation, adjusted to the user's activity level and goal (lose, maintain or gain weight).
+- **Food search** — search products by name or EAN code through the Open Food Facts API.
+  Name searches fetch 10 result pages **in parallel** using multithreading.
+- **Barcode scan from a photo** — the EAN number printed under the barcode is extracted from an image
+  with **Tesseract OCR** (French and English models).
+- **Food diary** — add or remove consumed products by serving, unit, quantity or percentage.
+- **Activity tracking** — log physical activities; burned calories are deducted from the daily intake.
+- **Dashboard** — circular gauges showing the progress of each nutrient towards its daily goal.
 
+## Tech stack
+
+| Area         | Technology                                                       |
+|--------------|------------------------------------------------------------------|
+| Language     | Java 21 (modular project with `module-info.java`)                |
+| UI           | JavaFX 17 (FXML + CSS), Ikonli Material Design icons             |
+| Persistence  | SQLite via JDBC (`sqlite-jdbc`)                                  |
+| External API | Open Food Facts REST API (`java.net.http.HttpClient`)            |
+| OCR          | Tess4J 5 (Java wrapper for Tesseract)                            |
+| Build        | Maven, `javafx-maven-plugin`                                     |
+| Tests        | JUnit 5, Mockito                                                 |
+
+## Architecture
+
+The application follows the **Model-View-ViewModel (MVVM)** pattern. Each layer only depends on the layer
+below it, which keeps the UI thin and makes the business logic testable without launching JavaFX.
+
+| Layer      | Package                          | Responsibility                                                            |
+|------------|----------------------------------|---------------------------------------------------------------------------|
+| View       | `resources/view`, `resources/style` | FXML layouts and CSS stylesheets                                       |
+| Controller | `be.esi.prj.controller`          | Binds UI components to the ViewModels and handles navigation between screens |
+| ViewModel  | `be.esi.prj.viewmodel`           | Exposes the UI state as observable JavaFX properties                      |
+| Model      | `be.esi.prj.model`               | Business logic behind simple entry points (`UserFacade`, `DiaryFacade`, `FoodFacade`) |
+| Service    | `be.esi.prj.service`             | Nutritional calculations, validation, session, OCR and Open Food Facts client |
+| Repository | `be.esi.prj.repository`          | Data access through repositories (with in-memory cache) and DAOs (JDBC)   |
+| DTO        | `be.esi.prj.dto`                 | Immutable Java `record`s exchanged between layers                         |
+
+**Design patterns:** MVVM, Facade, Repository, DAO, DTO, Singleton (session, OCR engine) and Observer (JavaFX bindings).
+
+### Class diagrams
+
+**Model layer**
+
+![Class diagram of the model layer](./images/model.png)
+
+**ViewModel layer**
+
+![Class diagram of the view-model layer](./images/view_model.png)
+
+### Database
+
+The data is stored in a local SQLite database. A user keeps one diary entry per day; each diary entry
+contains the consumed products and the activities of that day. Products retrieved from Open Food Facts
+are saved locally in the `Food` table.
+
+![Database schema](./images/base_de_donnees.png)
+
+
+## Project structure
+
+```text
+metre-moi-au-regime/
+├── images/                              # Diagrams used in this README
+└── metre_moi_au_regime/
+    ├── pom.xml                          # Maven configuration (dependencies, JavaFX plugin)
+    ├── external-data/
+    │   └── metre-moi-au-regime.db       # SQLite database
+    └── src/
+        ├── main/
+        │   ├── java/
+        │   │   ├── module-info.java     # Java module declaration
+        │   │   └── be/esi/prj/
+        │   │       ├── Main.java        # Entry point, wires all the layers together
+        │   │       ├── controller/      # JavaFX controllers (one per screen)
+        │   │       ├── viewmodel/       # ViewModels (observable UI state)
+        │   │       ├── model/           # Facades (business logic entry points)
+        │   │       ├── service/         # Nutrition, validation, session, OCR, Open Food Facts
+        │   │       ├── repository/      # Repositories, DAOs and connection manager
+        │   │       ├── dto/             # Immutable records
+        │   │       └── enumeration/     # Gender, GoalType, ActivityLevel, ConsumptionType
+        │   └── resources/
+        │       ├── view/                # FXML screens
+        │       ├── style/               # CSS stylesheets
+        │       ├── images/              # UI icons
+        │       ├── data/                # Tesseract language models (fra, eng)
+        │       └── dataForUnitTests/    # Sample images for the OCR tests
+        └── test/java/be/esi/prj/        # Unit and integration tests
+            ├── model/
+            ├── repository/
+            ├── service/
+            └── viewmodel/
+```
+
+## Getting started
+
+### Prerequisites
+
+- **JDK 21** or later (`JAVA_HOME` set or `java` available in the `PATH`)
+- An internet connection (Maven dependencies and Open Food Facts API)
+
+Maven does not need to be installed: the project ships with the **Maven Wrapper**.
+
+### Installation
+
+```bash
+git clone https://github.com/MGpro-grammer/metre-moi-au-regime.git
+cd metre-moi-au-regime/metre_moi_au_regime
+```
+
+### Run
+
+**Windows (PowerShell)**
+
+```powershell
+.\mvnw.cmd clean javafx:run
+```
+
+**Linux / macOS**
+
+```bash
+./mvnw clean javafx:run
+```
+
+> [!NOTE]
+> Launch the application from the `metre_moi_au_regime/` folder: the SQLite database path
+> (`external-data/metre-moi-au-regime.db`) is resolved relative to it.
+>
+> The application was developed and tested on Windows. On Linux and macOS, the OCR scan relies on
+> a system installation of Tesseract (`sudo apt install tesseract-ocr` or `brew install tesseract`).
 
 ## Plan de Tests Fonctionnels
 
@@ -88,23 +219,6 @@ Les tests fonctionnels élémentaires pour le projet sont les suivants :
 | Georges | Mise au point et correction de certains bug venant de la view <br> ou des bases de données |
 | Ian     | Mise au point et correction de certians bug venant du model  <br> ou du view-model         |
 
-## Installation et utilisation
-
-Pour utiliser l'application, suivez les étapes suivantes : 
-
-1. Clonez ce repository :
-   ```bash
-   git clone ...
-   ```
-
-2. Avancez-vous dans le dossier du projet :
-   ```bash
-   cd 4prj1d-d131-62218-62265/metre_moi_au_regime/
-   ```
-3. Lancer l'application avec la commande suivante (si vous avez Maven installé) :
-   ```bash
-   mvn clean compile exec:java -Dexec.mainClass=be.esi.prj.Main
-   ```
 ## Remerciements
 
 Nous tenons à remercier nos enseignants pour leur soutien et leurs conseils tout au long de ce projet.
