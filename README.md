@@ -19,6 +19,7 @@
 ## Table of contents
 
 - [About](#about)
+- [Demo](#demo)
 - [Features](#features)
 - [Tech stack](#tech-stack)
 - [Architecture](#architecture)
@@ -40,6 +41,12 @@ database, or recognised from a photo of the barcode thanks to OCR.
 
 > **Context** — Academic team project carried out at HE2B ESI (Brussels) by **Georges Mouratidis** and
 > **Ian Grande** over six weeks, with a strong focus on a clean layered architecture (MVVM) and automated testing.
+
+## Demo
+
+Full walkthrough of the application (4 min): sign-up, profile setup, OCR scan, food search, activities and diary.
+
+https://github.com/user-attachments/assets/bcdc6206-1361-455e-8aeb-2529287ef3c1
 
 ## Features
 
